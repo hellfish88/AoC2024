@@ -34,6 +34,7 @@ func main() {
 	}
 
 	fmt.Println(returnsum)
+	fmt.Println(toccurances(lhs, rhs))
 }
 
 func returnFile(p string) []string {
@@ -52,4 +53,24 @@ func diff(lhs, rhs int) int {
 	} else {
 		return lhs - rhs
 	}
+}
+
+func toccurances(lhs, rhs []int) int {
+	var similarity_score int = 0
+
+	for _, val := range lhs {
+		similarity_score += val * occurances(val, rhs)
+	}
+	return similarity_score
+}
+
+func occurances(i int, arr []int) int {
+	var occurances int = 0
+
+	for _, val := range arr {
+		if i == val {
+			occurances++
+		}
+	}
+	return occurances
 }
